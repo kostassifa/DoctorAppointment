@@ -5,30 +5,113 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Doctor Appointment Registration</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-            color: #333;
+<style>
+   /* General Styles */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
         }
 
+        body {
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+        }
+
+        .header img {
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            flex-grow: 1;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header .buttons a {
+            padding: 10px 20px;
+            font-size: 17px;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid transparent;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .header .buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles */
+        .footer {
+               background: linear-gradient(90deg, #007bff, #00c6ff);
+                color: #fff;
+                padding: 20px 0;
+                text-align: center;
+                box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+                width: 100%;
+                margin-top: 83px;
+		}
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Container Styles */
         .container {
             max-width: 500px;
-            margin: 20px;
+            margin: 20px auto;
             padding: 30px;
             background: white;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             position: relative;
             width: 100%;
+            flex-grow: 1;
         }
 
+        .container h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #007BFF;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Form Styles */
         .form-group {
             margin-bottom: 20px;
             position: relative;
@@ -39,14 +122,14 @@
             font-weight: 600;
             margin-bottom: 8px;
             font-size: 1rem;
-            color: #333;
+            color: #33D;
         }
 
-        input[type="text"], input[type="password"], select {
-            width: 95%;
-            padding: 15px 20px;
+        input[type="text"], input[type="password"], select, .dropdown-region {
+           width: 101%;
+            padding: 17px 0px;
             margin-top: 5px;
-            border: 1px solid #ddd;
+            border: 1px solid #0000FF;
             border-radius: 8px;
             font-size: 1rem;
             background-color: #f9f9f9;
@@ -55,7 +138,7 @@
             color: #555;
         }
 
-        input[type="text"]:focus, input[type="password"]:focus, select:focus {
+        input[type="text"]:focus, input[type="password"]:focus, select:focus, .dropdown-region:focus {
             border-color: #007BFF;
             box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.2);
             outline: none;
@@ -81,34 +164,7 @@
             box-shadow: 0px 8px 25px rgba(0, 123, 255, 0.5);
         }
 
-        h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #007BFF;
-            margin-bottom: 20px;
-        }
-
-        .dropdown-region {
-            width: 105%;
-            padding: 15px 20px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            background-color: #f9f9f9;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            color: #555;
-        }
-
-        .dropdown-region:focus {
-            border-color: #007BFF;
-            box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.2);
-            outline: none;
-            background-color: #fff;
-        }
-
-        /* Styles for the message label */
+        /* Message Label Styles */
         .message-label {
             display: block;
             margin-bottom: 20px;
@@ -138,50 +194,71 @@
         .return-homepage:hover {
             text-decoration: underline;
         }
-
-        /* Ensure responsiveness on mobile devices */
-        @media (max-width: 768px) {
-            .container {
-                width: 100%;
-                margin: 10px;
-                padding: 20px;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            input[type="text"], input[type="password"], select {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .register-button {
-                font-size: 1rem;
-                padding: 12px;
-            }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            padding: 10px;
+            text-align: center;
         }
 
-        /* Very small screen sizes */
-        @media (max-width: 480px) {
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            input[type="text"], input[type="password"], select {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-            }
-
-            .register-button {
-                font-size: 0.95rem;
-                padding: 10px;
-            }
+        .header h1 {
+            font-size: 20px;
         }
-    </style>
+
+        .header img {
+            height: 40px;
+        }
+
+        .container {
+            padding: 20px;
+            width: 90%;
+        }
+
+        .register-button {
+            font-size: 1rem;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 18px;
+        }
+
+        .header img {
+            height: 35px;
+        }
+
+        .header .buttons a {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        .container {
+            padding: 15px;
+            width: 95%;
+            border-radius: 12px;
+        }
+
+        .register-button {
+            font-size: 0.95rem;
+            padding: 12px;
+        }
+    }
+</style>
 </head>
 <body>
     <form id="form1" runat="server">
+                <!-- Header Section -->
+        <div class="header">
+            <img src="Images/Flag_of_the_Red_Cross.png" alt="Red Cross Flag" />
+            <h1>I Need Doctor</h1>
+            <div class="buttons">
+                <a href="Main.aspx">Home</a>
+                <a href="javascript:history.back()">Back</a>
+            </div>
+        </div>
         <div class="container">
             <h2>Doctor Register Form</h2>
 
@@ -232,7 +309,12 @@
                 <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="register-button" />
             </div>
 
-            <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink>
+            <!--<asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink>-->
+        </div>
+        
+        <!-- Footer Section -->
+        <div class="footer">
+            &copy; 2024 Doctor Appointment System. All rights reserved.
         </div>
     </form>
 </body>

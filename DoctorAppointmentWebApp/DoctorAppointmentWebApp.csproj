@@ -126,6 +126,7 @@
   <ItemGroup>
     <Content Include="Pages\BookAppoitment.aspx" />
     <Content Include="Pages\CancelBookingDoctor.aspx" />
+    <Content Include="Pages\ForgotPassword.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Logout.aspx" />
     <Content Include="Pages\Main.aspx" />
@@ -135,6 +136,7 @@
     <Content Include="Pages\RegisterDoctor.aspx" />
     <Content Include="Pages\RegisterOption.aspx" />
     <Content Include="Pages\CancelBooking.aspx" />
+    <Content Include="Pages\ResetPassword.aspx" />
     <Content Include="Pages\SearchDoctor.aspx" />
     <Content Include="Pages\ViewBookings.aspx" />
     <Content Include="Pages\ViewBookingsDoctor.aspx" />
@@ -154,6 +156,13 @@
     </Compile>
     <Compile Include="Pages\CancelBookingDoctor.aspx.designer.cs">
       <DependentUpon>CancelBookingDoctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -217,6 +226,13 @@
     </Compile>
     <Compile Include="Pages\CancelBooking.aspx.designer.cs">
       <DependentUpon>CancelBooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\SearchDoctor.aspx.cs">
       <DependentUpon>SearchDoctor.aspx</DependentUpon>

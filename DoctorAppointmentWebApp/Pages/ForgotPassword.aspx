@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DoctorAppointmentWebApp.Pages.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="DoctorAppointmentWebApp.Pages.ForgotPassword" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login - Doctor Appointment</title>
+    <title>ForgotPassword-Doctor Appointment</title>
     <style>
 /* Reset browser default margin and padding */
 * {
@@ -203,7 +203,8 @@ body {
 </head>
 <body>
     <form id="form1" runat="server">
-                <div class="header">
+        <!-- Header Section -->
+        <div class="header">
             <img src="Images/Flag_of_the_Red_Cross.png" alt="Red Cross Flag" />
             <h1>I Need Doctor</h1>
             <div class="buttons">
@@ -211,22 +212,19 @@ body {
                 <a href="javascript:history.back()">Back</a>
             </div>
         </div>
-        <div class="login-container">
-            <h2>Login</h2>
-            <asp:Label runat="server" AssociatedControlID="txtUsername" Text="Amka" />
-            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter your amka" />
 
-            <asp:Label runat="server" AssociatedControlID="txtPassword" Text="Password" />
-            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Enter your password" />
+        <!-- Content -->
+        <div class="login-container">
+            <h2>Forgot Password</h2>
+            <asp:Label runat="server" AssociatedControlID="txtAmka" Text="Enter your Amka" />
+           <asp:TextBox ID="txtAmka" runat="server" CssClass="form-control" placeholder="Amka" />
+            <asp:Label runat="server" AssociatedControlID="txtEmail" Text="Enter your email address" />
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email address" />
             <asp:Literal ID="litMessage" runat="server" />
-            <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" Text="Login"  OnClick="btnLogin_Click" />
-            <br/>
-            <br/>
-            <br/>
-           <asp:HyperLink ID="lnkForgotPassword" runat="server" CssClass="forgot-password" NavigateUrl="~/Pages/ForgotPassword.aspx">Forgot your password?</asp:HyperLink> 
-          <!-- <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink> -->
+            <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Reset Password" OnClick="btnSubmit_Click" />
         </div>
-                        <!-- Footer Section -->
+
+        <!-- Footer Section -->
         <div class="footer">
             &copy; 2024 Doctor Appointment System. All rights reserved.
         </div>

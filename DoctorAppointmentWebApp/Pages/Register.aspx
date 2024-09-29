@@ -7,8 +7,8 @@
     <title>Doctor Appointment Registration</title>
     <!-- Include the font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-    <style>
-        /* General Styles */
+<style>
+   /* General Styles */
         html, body {
             height: 100%;
             margin: 0;
@@ -124,14 +124,14 @@
             font-weight: 600;
             margin-bottom: 8px;
             font-size: 1rem;
-            color: #333;
+            color: #33D;
         }
 
         input[type="text"], input[type="password"], select, .dropdown-region {
            width: 101%;
             padding: 17px 0px;
             margin-top: 5px;
-            border: 1px solid #ddd;
+            border: 1px solid #0000FF;
             border-radius: 8px;
             font-size: 1rem;
             background-color: #f9f9f9;
@@ -196,59 +196,59 @@
         .return-homepage:hover {
             text-decoration: underline;
         }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                padding: 10px;
-                text-align: center;
-            }
-
-            .header h1 {
-                font-size: 20px;
-            }
-
-            .header img {
-                height: 40px;
-            }
-
-            .container {
-                padding: 20px;
-                width: 95%;
-            }
-
-            .register-button {
-                font-size: 1rem;
-                padding: 12px;
-            }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            padding: 10px;
+            text-align: center;
         }
 
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 18px;
-            }
-
-            .header img {
-                height: 35px;
-            }
-
-            .header .buttons a {
-                font-size: 14px;
-                padding: 5px 10px;
-            }
-
-            .container {
-                padding: 10px;
-                border-radius: 10px;
-            }
-
-            .register-button {
-                font-size: 0.95rem;
-                padding: 10px;
-            }
+        .header h1 {
+            font-size: 20px;
         }
-    </style>
+
+        .header img {
+            height: 40px;
+        }
+
+        .container {
+            padding: 20px;
+            width: 90%;
+        }
+
+        .register-button {
+            font-size: 1rem;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 18px;
+        }
+
+        .header img {
+            height: 35px;
+        }
+
+        .header .buttons a {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        .container {
+            padding: 15px;
+            width: 95%;
+            border-radius: 12px;
+        }
+
+        .register-button {
+            font-size: 0.95rem;
+            padding: 12px;
+        }
+    }
+</style>
 </head>
 <body>
     <form id="form1" runat="server">

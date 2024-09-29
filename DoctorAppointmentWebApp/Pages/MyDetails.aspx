@@ -6,16 +6,97 @@
 <head runat="server">
     <title>My Details</title>
     <style>
+        /* Reset browser default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f6f9;
             color: #333;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .header img {
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            flex-grow: 1;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+          .header .buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+  }
+
+  .header .buttons a {
+      padding: 10px 20px;
+      font-size: 17px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid transparent;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+  }
+
+  .header .buttons a:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+  }
+
+        .footer {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
         }
 
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 120px auto 100px auto; /* Adjusted margin to account for fixed header and footer */
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -74,13 +155,6 @@
             margin-bottom: 15px;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #777;
-        }
-
         .update-button {
             display: block;
             width: 100%;
@@ -130,6 +204,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
+                <!-- Header Section -->
+        <div class="header">
+            <img src="Images/Flag_of_the_Red_Cross.png" alt="Red Cross Flag" />
+            <h1>I Need Doctor</h1>
+            <div class="buttons">
+                <a href="Main.aspx">Home</a>
+                <a href="javascript:history.back()">Back</a>
+            </div>
+        </div>
         <div class="container">
             <h1>My Details</h1>
 
@@ -188,11 +271,11 @@
             <!-- Update Button -->
             <asp:Button ID="btnUpdate" CssClass="update-button" Text="Update" runat="server" OnClick="btnUpdate_Click" />
 
-            <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink>
-
-            <div class="footer">
-                © 2024 Doctor Appointment Web App
-            </div>
+            <!--  <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink> -->
+      
+        </div>
+          <div class="footer">
+            <p>&copy; 2024 Doctor Appointment System. All rights reserved.</p>
         </div>
     </form>
 </body>

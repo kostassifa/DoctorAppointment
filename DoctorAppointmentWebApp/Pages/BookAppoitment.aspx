@@ -5,26 +5,105 @@
 <head runat="server">
     <title>New Booking</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* Reset browser default margin and padding */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #a2c2e6, #004a7c);
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center; /* Horizontally center the form */
+            align-items: center; /* Vertically center the form */
+            flex-direction: column; /* Ensure the form and footer stack properly */
+            padding-top: 80px; /* Ensure space for the fixed header */
+            padding-bottom: 80px; /* Ensure space for the fixed footer */
+        }
+
+        .header {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100vw; /* Full viewport width */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .header img {
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            flex-grow: 1;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header .buttons a {
+            padding: 10px 20px;
+            font-size: 17px;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid transparent;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .header .buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+            width: 100vw; /* Full viewport width */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
         }
 
         form {
-            max-width: 600px;
-            margin: 50px auto;
+            max-width: 600px; /* Maximum form width */
+            width: 100%;
             padding: 2rem;
             background: #fff;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            transition: transform 0.3s ease;
-            transform: scale(1);
-        }
-
-        form:hover {
-            transform: scale(1.02);
         }
 
         h2 {
@@ -43,6 +122,12 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: #333;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        label:hover {
+            color: #007bff;
         }
 
         select, input[type="text"], input[type="button"], input[type="submit"], input[type="date"], textarea {
@@ -50,16 +135,17 @@
             padding: 12px;
             margin-bottom: 1.5rem;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 8px;
             box-sizing: border-box;
             font-size: 1rem;
             color: #333;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         select:focus, input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
             border-color: #007bff;
             outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
         }
 
         input[type="submit"] {
@@ -67,14 +153,17 @@
             color: #fff;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 12px;
+            border-radius: 8px;
         }
 
         input[type="submit"]:hover {
             background: linear-gradient(45deg, #004a7c, #007bff);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         textarea {
@@ -93,10 +182,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="Images/Flag_of_the_Red_Cross.png" alt="Red Cross Flag" />
+            <h1>I Need Doctor</h1>
+            <div class="buttons">
+                <a href="Main.aspx">Home</a>
+                <a href="javascript:history.back()">Back</a>
+            </div>
+        </div>
+
+        <!-- Form Centered with Flexbox -->
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div>
+                <form>
                     <h2>New Booking</h2>
 
                     <asp:Label ID="lblRegion" runat="server" Text="Region: "></asp:Label>
@@ -123,18 +223,14 @@
                     <asp:TextBox ID="txtReason" runat="server" TextMode="MultiLine" Rows="6" MaxLength="3000"></asp:TextBox>
                     <br /><br />
 
-                   <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                            <ProgressTemplate>
-                                <div style="color: red; font-weight: bold;">WAIT FOR THE PROCESS TO FINISH BEFORE SUBMIT AGAIN...</div>
-                            </ProgressTemplate>
-                   </asp:UpdateProgress>
-                   <asp:Literal ID="litMessage" runat="server" EnableViewState="False"></asp:Literal>
-                   <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_OnClick" Text="Submit" />
-                    <br />
-                    <br />
-                    <br />
-                    <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink>
-                </div>
+                    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                        <ProgressTemplate>
+                            <div style="color: red; font-weight: bold;">WAIT FOR THE PROCESS TO FINISH BEFORE SUBMIT AGAIN...</div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                    <asp:Literal ID="litMessage" runat="server" EnableViewState="False"></asp:Literal>
+                    <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_OnClick" Text="Submit" />
+                </form>
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnSubmit" EventName="Click" />
@@ -144,6 +240,11 @@
                 <asp:AsyncPostBackTrigger ControlID="datePicker" EventName="TextChanged" />
             </Triggers>
         </asp:UpdatePanel>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>&copy; 2024 Doctor Appointment System. All rights reserved.</p>
+        </div>
     </form>
 </body>
 </html>

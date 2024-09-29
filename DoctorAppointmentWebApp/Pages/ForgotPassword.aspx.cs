@@ -64,7 +64,7 @@ namespace DoctorAppointmentWebApp.Pages
 
                                     SendEmail(email, subject, body);
 
-                                    litMessage.Text = "<span style='color:green<p class='success-message'>An email has been sent to your email address with instructions to reset your password.</p></span>";
+                                    litMessage.Text = "<p class='success-message'>An email has been sent to your email address with instructions to reset your password.</p>";
                                 }
                                 else
                                 {

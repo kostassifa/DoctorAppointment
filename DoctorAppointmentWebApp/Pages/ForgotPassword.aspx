@@ -199,6 +199,11 @@ body {
     text-align: center;
     margin-bottom: 1rem;
 }
+.success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 </style>
 </head>
 <body>

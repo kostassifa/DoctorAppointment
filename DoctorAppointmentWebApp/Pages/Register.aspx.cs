@@ -115,6 +115,13 @@ namespace DoctorAppointmentWebApp.Pages
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(region))
+            {
+                lblMessage.Text = "Region cannot be empty.";
+                lblMessage.CssClass = "error-message";
+                return;
+            }
+
             string connectionString = ConfigurationManager.ConnectionStrings["DoctorAppointmentConnectionString"].ConnectionString;
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))

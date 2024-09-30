@@ -143,6 +143,17 @@ namespace DoctorAppointmentWebApp.Pages
 
             if (DateTime.TryParse(datePicker.Text, out selectedDate))
             {
+                // Check if selectedDate is Sunday
+                if (selectedDate.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    // Disable time slots and inform the user
+                    ddlTime.Items.Insert(0, new ListItem("--Select Time Slot--", "0"));
+                    ddlTime.Enabled = false;
+                    litMessage.Text = "<span style='color:red;'>Appointments are not available on Sundays.</span>";
+                    return; // Exit the method
+                }
+
+                // Existing code to generate time slots
                 // Get the booked time slots for this doctor on this date
                 List<string> bookedTimeSlots = GetBookedTimeSlots(selectedDoctor, selectedDate);
 

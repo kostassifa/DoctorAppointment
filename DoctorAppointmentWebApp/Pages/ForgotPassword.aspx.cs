@@ -43,7 +43,7 @@ namespace DoctorAppointmentWebApp.Pages
                         {
                             // Email exists, generate a reset token
                             string amka = result.ToString();
-                            string resetToken = Guid.NewGuid().ToString();
+                            string resetToken = Guid.NewGuid().ToString();// Token creation
                             DateTime tokenExpiry = DateTime.Now.AddHours(1); // Token valid for 1 hour
 
                             // Store the token and expiry in the database

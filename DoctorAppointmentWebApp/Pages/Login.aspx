@@ -226,7 +226,7 @@ body {
            <asp:HyperLink ID="lnkForgotPassword" runat="server" CssClass="forgot-password" NavigateUrl="~/Pages/ForgotPassword.aspx">Forgot your password?</asp:HyperLink> 
           <!-- <asp:HyperLink ID="lnkReturnHomepage" runat="server" CssClass="return-homepage" NavigateUrl="~/Pages/Main.aspx">Return to Homepage</asp:HyperLink> -->
         </div>
-                        <!-- Footer Section -->
+         <!-- Footer Section -->
         <div class="footer">
             &copy; 2024 Doctor Appointment System. All rights reserved.
         </div>
